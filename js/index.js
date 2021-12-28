@@ -27,8 +27,8 @@ function show_product(products) {
   for (var product of products) {
     product_list.innerHTML += `<div class="col-6 col-sm-4 col-lg-3 mt-3 p-3 product">
       <div class="product-img">
-        <img src="img/product/iphone13.jpg" alt="Product ${product.id}">
-        <img src="img/product/iphone13pro.jpg" alt="Product ${product.id}">
+        <img src="${product.image}" alt="Product ${product.id}">
+       
       </div>
                                  
       <div class="product-name-dark">${product.name}</div>

@@ -95,8 +95,9 @@ function initialize_database() {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT UNIQUE NOT NULL,
         description TEXT NULL,
-        price REAL NOT NULL,
+        price NUMBER NOT NULL,
         category_id INTEGER NOT NULL,
+        image TEXT NULL,
         FOREIGN KEY (category_id) REFERENCES category(id))`;
   
       tx.executeSql(
@@ -133,10 +134,26 @@ function initialize_database() {
       tx.executeSql(query, ["Category 01", "iPhone 13"],fetch_transaction_success("Category 01"), transaction_error);
       tx.executeSql(query, ["Category 02", "iPhone 13 Pro"],fetch_transaction_success("Category 02"), transaction_error);
   
-      /*var query = "INSERT INTO product (name, description, price, category_id) VALUES (?, ?, ?, ?)";
+      var query = "INSERT INTO product (name, description, price, category_id, image) VALUES (?, ?, ?, ?, ?)";
   
-      tx.executeSql(query, ["iPhone 13 Pink", "Pink", "23.000.000", "1"],fetch_transaction_success("Category 01"), transaction_error);
-      tx.executeSql(query, ["iPhone 13 Pro Blue", "Blue", "29.000.000", "2"],fetch_transaction_success("Category 02"), transaction_error);*/
+      tx.executeSql(query, ["iPhone 13 Mini Pink", "Pink", "18000000", "1", "img/minipink.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Mini Blue", "Blue", "18000000", "1", "img/miniblue.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Mini Midnight", "Midnight", "18000000", "1", "img/miniblack.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Mini Starlight", "Starlight", "18000000", "1", "img/miniwhite.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Mini Product Red", "Product Red", "18000000", "1", "img/minired.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pink", "Pink", "23000000", "1", "img/13pink.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Blue", "Blue", "23000000", "1", "img/13blue.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Midnight", "Midnight", "23000000", "1", "img/13black.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Starlight", "Starlight", "23000000", "1", "img/13white.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Product Red", "Product Red", "23000000", "1", "img/13red.png"],fetch_transaction_success("Category 01"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Blue", "Blue", "29000000", "2", "img/problue.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Silver", "Silver", "29000000", "2", "img/prosilver.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Gold", "Gold", "29000000", "2", "img/progold.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Graphite", "Graphite", "29000000", "2", "img/problack.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Max Blue", "Blue", "32000000", "2", "img/promaxblue.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Max Silver", "Silver", "32000000", "2", "img/promaxsilver.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Max Gold", "Gold", "32000000", "2", "img/promaxgold.png"],fetch_transaction_success("Category 02"), transaction_error);
+      tx.executeSql(query, ["iPhone 13 Pro Max Graphite", "Graphite", "32000000", "2", "img/promaxblack.png"],fetch_transaction_success("Category 02"), transaction_error);
 
       var query = "INSERT INTO account (username, password, status) VALUES (?, ?, ?)";
       tx.executeSql( query, ["example2@abc.com", "123456",1 ], fetch_transaction_success("example@abc.com"), transaction_error);
